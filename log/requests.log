@@ -1,0 +1,21 @@
+2023-10-24T23:20:38.411082700+08:00 - SIGINT received; starting forced shutdown
+2023-10-24T23:20:38.413775400+08:00 - accept thread stopped
+2023-10-24T23:20:38.414073300+08:00 - shutting down idle worker
+2023-10-24T23:20:38.414235300+08:00 - shutting down idle worker
+2023-10-24T23:20:38.414485800+08:00 - shutting down idle worker
+2023-10-24T23:20:38.414686+08:00 - shutting down idle worker
+2023-10-24T23:20:38.415061700+08:00 - shutting down idle worker
+2023-10-24T23:20:38.415171100+08:00 - shutting down idle worker
+2023-10-24T23:20:38.415405300+08:00 - shutting down idle worker
+2023-10-24T23:20:38.415513600+08:00 - shutting down idle worker
+2023-10-24T23:20:38.415624400+08:00 - shutting down idle worker
+2023-10-24T23:20:38.415755100+08:00 - shutting down idle worker
+2023-10-24T23:20:38.415887800+08:00 - shutting down idle worker
+2023-10-24T23:20:38.416073+08:00 - shutting down idle worker
+2023-10-24T23:20:38.416260800+08:00 - shutting down idle worker
+2023-10-24T23:20:38.416372400+08:00 - shutting down idle worker
+2023-10-24T23:20:38.416487400+08:00 - shutting down idle worker
+2023-10-24T23:20:38.416598400+08:00 - shutting down idle worker
+2023-10-24T23:20:51.480432800+08:00 - starting 16 workers
+2023-10-24T23:20:51.480674400+08:00 - Actix runtime found; starting in Actix runtime
+2023-10-24T23:20:56.694762800+08:00 - booting up 123
