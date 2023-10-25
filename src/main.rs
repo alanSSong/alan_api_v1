@@ -1,12 +1,35 @@
-use actix_web::{get, post, web, App, HttpResponse, HttpServer, Responder};
+use actix_web::{get, post, App, HttpResponse, HttpServer, Responder, middleware::Logger, web, Result};
 use log4rs;
-use log::{info};
+use serde::{Deserialize, Serialize};
+
+#[derive(Deserialize, Serialize)]
+struct HelloWorld {
+    hello: String
+}
+
+#[derive(Deserialize, Serialize)]
+struct Info {
+    username: String
+}
+
 
 #[get("/")]
-async fn hello() -> impl Responder {
-    info!("booting up 123 {}", 200);
-    HttpResponse::Ok().body("Hello world!")
+async fn hello() -> HttpResponse {
+    // HttpResponse::Ok().body("Hello world!")
+    HttpResponse::Ok().json(HelloWorld {
+        hello: "world".to_string(),
+    })
 }
+
+#[get("/info/{username}")]
+async fn search(username: web::Path<String>) -> Result<impl Responder>  {
+    let obj = Info {
+        username: username.to_string(),
+    };
+    Ok(web::Json(obj))
+}
+
+
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
@@ -14,14 +37,11 @@ async fn main() -> std::io::Result<()> {
      // 加载 log4rs 配置文件
     log4rs::init_file("config/log4rs.yaml", Default::default()).unwrap();
 
-    HttpServer::new(move || {
+    HttpServer::new(|| {
         App::new()
-            // 不支持写入文件
-            // .wrap(Logger::default())
-            // .wrap(Logger::new(r#"%a "%U" %s %b "%{Referer}i" "%{User-Agent}i" %Dms"#))
-            // .app_data(web::Data::new(file_logger.clone()))
-            // .wrap(TracingLogger::new())
+            .wrap(Logger::new(r#"%a "%U" %s %b "%{Referer}i" "%{User-Agent}i" %Dms"#))
             .service(hello)
+            .service(search)
     })
     .bind(("127.0.0.1", 8080))?
     .run()

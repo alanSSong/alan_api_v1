@@ -20,7 +20,7 @@ appenders:
     path: "log/roll.log"
     append: true  # 追加模式
     encoder:
-      kind: json  # pattern 和 json
+      kind: pattern  # pattern 和 json
     policy:
       kind: compound  # 即使用所有 policy
       # 触发器
